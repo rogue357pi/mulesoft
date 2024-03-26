@@ -1,0 +1,167 @@
+Received: from DM6PR11MB3323.namprd11.prod.outlook.com (2603:10b6:300:2c::28)
+ by MWHPR11MB1917.namprd11.prod.outlook.com with HTTPS via
+ MWHPR10CA0066.NAMPRD10.PROD.OUTLOOK.COM; Sat, 13 Oct 2018 15:32:48 +0000
+Authentication-Results: signetjewelers.com; dkim=none (message not signed)
+ header.d=none;signetjewelers.com; dmarc=none action=none
+ header.from=signetjewelers.com;
+Received: from DM6PR11MB2650.namprd11.prod.outlook.com (20.176.99.32) by
+ DM6PR11MB3323.namprd11.prod.outlook.com (20.176.122.28) with Microsoft SMTP
+ Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.20.1228.26; Sat, 13 Oct 2018 15:32:46 +0000
+Received: from DM6PR11MB2650.namprd11.prod.outlook.com
+ ([fe80::6847:50bb:87f:ca98]) by DM6PR11MB2650.namprd11.prod.outlook.com
+ ([fe80::6847:50bb:87f:ca98%4]) with mapi id 15.20.1207.029; Sat, 13 Oct 2018
+ 15:32:46 +0000
+From: "Punnam, Pradeep" <Pradeep.Punnam@signetjewelers.com>
+To: IT CSD <ITCSD@signetjewelers.com>
+CC: "Agawa, Mas" <Mas.Agawa@signetjewelers.com>
+Subject: SIGCT DEV Database Down.
+Thread-Topic: SIGCT DEV Database Down.
+Thread-Index: AQHUYwn9BR5ZYSVAb0eujgZl2XVjRw==
+Date: Sat, 13 Oct 2018 15:32:46 +0000
+Message-ID: <51BABC98-A6D0-46AE-B235-82607DA66B32@signetjewelers.com>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach:
+X-MS-Exchange-Organization-SCL: -1
+X-MS-TNEF-Correlator:
+ <51BABC98-A6D0-46AE-B235-82607DA66B32@signetjewelers.com>
+MIME-Version: 1.0
+X-MS-Exchange-Organization-MessageDirectionality: Originating
+X-MS-Exchange-Organization-AuthSource: DM6PR11MB2650.namprd11.prod.outlook.com
+X-MS-Exchange-Organization-AuthAs: Internal
+X-MS-Exchange-Organization-AuthMechanism: 04
+X-Originating-IP: [198.70.201.220]
+X-MS-Exchange-Organization-Network-Message-Id:
+ be022ba6-cec0-4538-1186-08d631212083
+X-MS-PublicTrafficType: Email
+X-Microsoft-Exchange-Diagnostics:
+ 1;DM6PR11MB2650;35:PDA8RJ+YN1AJQPazrw/L6gbKY56wwW0kQLEoZKxtf7bAlNMXgpqhn+LKFtTX1MrHUs+JV2wizlNLbqckp1psXg==;38:pOK2cdu53vrphOXISVPAvYnDYM8wyVPl6AKFW/+uWHYqtK1p8DcN0w/hHxWQAp5dZ1wEVCGQ76tEpuNnteW7iY6bdgH0haUFy0dVubIG1Y5ElpX77WCS37QWYyHPvP7qcw9yumSfWpkangJ/46l5I2mAW0IeaNW7gy65Ko9xMAX4nr4vfvTaA5yjqaDsQgjZlOslyD+CKIpFxQsFM7KfW4i/1GDJp8gBaHGW9jYsHpqLPo0B1YPshva+nwXIpOL1
+X-MS-Exchange-Antispam-SRFA-Diagnostics: SOS;
+Return-Path: Pradeep.Punnam@signetjewelers.com
+X-MS-Exchange-Organization-ExpirationStartTime: 13 Oct 2018 15:32:46.8707
+ (UTC)
+X-MS-Exchange-Organization-ExpirationStartTimeReason: Original Submit
+X-MS-Exchange-Organization-ExpirationInterval: 2:00:00:00.0000000
+X-MS-Exchange-Organization-ExpirationIntervalReason: Original Submit
+X-MS-Office365-Filtering-Correlation-Id: be022ba6-cec0-4538-1186-08d631212083
+X-MS-Office365-Filtering-HT: Tenant
+X-Microsoft-Antispam:
+ BCL:0;PCL:0;RULEID:(7020095)(4652040)(8989299)(4534185)(4627221)(201703031133081)(201702281549075)(8990200)(5600074)(711020)(4618075)(2017052603328)(7153060)(7193020);SRVR:DM6PR11MB3323;
+X-Microsoft-Exchange-Diagnostics:
+ 1;DM6PR11MB3323;3:iG+V3OyiQdqOJ0SCcN6mkooQ4DVc+5Sd9cRj6w/odclsABQ5zD9j8qcAv22YG3u6Rb1TtaQNB+B4PpEj79eQndzFYuuS7fnt74Shwj0KzFRTuYRnvosaM6YPqb+O7xvxDtDVvkyLGjexZk4j8IMvjlnYq38mtGDQMoZpGDVleNCD15QX6fah/YOMQHXPA1sQyEVk02c4uxDpzUFMCyF7Yg/iIEh6BkPQDM3/f9yrR6UK8YUm11UfEKz3JieuCbPh;25:A+ZBe13hEEmiVvb9Nog7FhKi8VLnnzlHIvr2Lt35GsfKhZNvxPqyxE2+hZVlOzm7Nc+LLMD6i0ItQuhZtbZQsCeGhHFiwZPDVKsoJ/Do+idyzrjF0ygWvASsJSC1o6VhLzydBHqb8loYIXizGGtVnKegSF9iSMr2cK2BeQIHe07d02ptghbD8sCOEhjxnM+V4iXDrN7/2LJYvauqMVrI1yxjzt9SJnLkdG4XLz5m2nnjbOZ3AciH2aUrJ+EPaZlV4ouqDjUPO3nbeH3JqefG9tMaFyZj2jo8iFgWCxEGN345ZU8mOBqcAg+9HBY4iYahbiM3U///9MFzAnOz9+CtlQ==;31:RBO2DeyiNqRHJK0PuxC1DWWHNAv3IYQpw1bUK+NE2cdlZrPoaphIFvg7THOF0lu2zsNcsHYztyUKcQXhYp1U73KienOEwRMJm5vh3R6zzJQfU9Ko1mrEauTa7ACYgXBhtOM5ocSfzunnTqd2hpHFlrIdd/w95fwC9KzwZiWqTCW/oWi4WJkDLp2x7E/OGmRK/iIIgvqF+TxIaR6PuSS33Z2tAVCOVXn/7ucnDcp/BQs=
+X-MS-TrafficTypeDiagnostic: DM6PR11MB3323:
+X-LD-Processed: 3aa3ff7f-2e43-4ebd-b484-42e80b2efcaa,ExtAddr
+X-Microsoft-Exchange-Diagnostics:
+ 1;DM6PR11MB3323;20:nT4QrYNL2Pj4Yt04pta5P4XPs9trpyXX0kx1oT23TENFVvxczGyYJkv+tozo5nVHkHY79BbAmp+VayWVpy9zv26kn6Oe4uAhcJLKbaZsR4I8sgjA2tXDe9r95+sVWuM0a26baPG3vfGpT4mjRCQ/amV8vr0RtHgkZyPfbJbeHnkIS1eNB9LRP2VpBdRkOPbUVtVkji3HFPIrqnoixihwSxGKtct6vot2sSnSHZmLaQRMiQtgpofJzDbC06gOs/0puUIJavRJWnzJagJPlpHR+dENcSM1H8H0T0uthIhEj5qOK5Iz1EnkLnA5ytHdx6APxXAZEdEI+nf1FkRMpaWuEIM40VAJ7wNVsW5yTL3c7CMRENl9gFA1Dmom+iXuM/sbd4EsIty1SVOddOM+LJFGWnwhfZnp84PxfYd+ZGdMD3RXMyPk6uKLEdDWbstviaiDh6JMfSsvGeH7QJuyB5KtxLzFFrCK0TqiAQ+hT0PVv4IB9iNCCq88U0ANtnvnd9xn;4:yk6RorCbsi30H/FapDMc1uk4SCGkblyS7NXZpijF+hasIs/QqkA7COz262zqmHq4phnD0d7c5oVdvti4dEDuC0E0xVozT/y9iwd97oHjW35Le/zKGhi0ci1PN7vY5L04k2KOT8R7a9uxqfPhJimP5hYxxgeKRiHyJ0ZgoKKY//H0b6puFEpELB0NtMJ+eVF8HpGGAEfN80WMzbDQ6VW+lhK3QjAd3Wavvax8Z5gS+Ef3r+/XyINA7FwrSp5hwkZtatDiuFGdSitdrtplAsbHbrMnSa57gTkSYM1G4+gFmleviJyEbgM4p9+b+JmZq9C4QsRjQM/vpS+sn01RG2dc6t+mWFTz5+hYF9mq15iAhsGSCarNNRZfEMcKNi5nJoeXAadyighKgF130imD2nFYrApFk9ozDjFg4XUUVc0ASs8=
+X-Exchange-Antispam-Report-Test:
+ UriScan:(21748063052155)(28532068793085)(190501279198761)(227612066756510);
+X-Exchange-Antispam-Report-CFA-Test:
+ BCL:0;PCL:0;RULEID:(8211001083)(9101524173)(20180801055)(2401047)(8121501046)(823300264)(823320095)(93006095)(93001095)(10201501046)(3231355)(944501410)(52105095)(3002001)(201708071742011)(7699051)(76991067);SRVR:DM6PR11MB3323;BCL:0;PCL:0;RULEID:;SRVR:DM6PR11MB3323;
+X-Forefront-Antispam-Report:
+ SFV:SKI;SFS:;DIR:INB;SFP:;SCL:-1;SRVR:DM6PR11MB3323;H:DM6PR11MB2650.namprd11.prod.outlook.com;FPR:;SPF:None;LANG:en;
+X-Microsoft-Exchange-Diagnostics:
+ 1;DM6PR11MB3323;23:Vj+0+9qXGOicQLby1MVc0xZ4b5LcNmWFjKMpa31vdfLVAdIC6Tuy3g1MLtOBJ1N4DabID2SZrMo5ayOt3mhR6vFY19Hn9MxbhYmx0g3Vye001SSCAh1DNUI5MNhzpxaQproohHXh0DwQlxej3Vut4w==;6:zXw+/nV3e7/7gHVtSS5J0eOaS7/EGjD3XhrBN5iUf8YmzNvV9uhmo+AhWN76nhMAudfbHbRVm8bDP4JYeqaZAM8aY7RubtACIsa7Zz3XytYmf1ByzJ1JLtiidBSnxaL5ShxRgGMGhUsiVVafxHH2wRydqISpT92zCVDw9ny7L0sSKOeIFf/1niWSpCu1rPlzk/ZHSAbtiOV+fZzAD95qBUl0ubI0Qr3Nh5F4Txr+HQfuANgguLLItEjkldCL8OE+/Twy9oDljzhDBIbOojufILXqfzWkwty1lmqBajSOA51XzTlFar+Dw122iu7jkEhqWpFNcogxS08+6YNx9GG0IOUUrNc/JtlNu060VASQ4+AMLyBL5h3wHDUh5MAxoYp5mMqAmc5IvLxMDoaKGs+K3RYOEbPNFmwxcGKQK2+DiVpYpfdGfpgc1bMNZwZjH3SLFDLU6CWKbX0kn2psptQ4qQ==;5:t6fk1xaEsXRfuxuXAaX0gw0V11dn/JhEwy3ikVKQxKEm2nmR4Of6U9vNkvvnDXkoWbkhZBT18YGvYvcAXECCNe5FrI/8cM+1MjPIXg8YgCEpbvotpzuz/RvGoOv4h6ktqvyGlBwpGN4c/Khuvx1RDwvuI0ZBjDJKcmavr+FQpxU=
+SpamDiagnosticOutput: 1:0
+X-Microsoft-Exchange-Diagnostics:
+ 1;DM6PR11MB3323;7:5z4mnGQAKVGX58jjuFs9edXnsiix90kH++ar8Lz5zUmkc0y2Fb+O4gUHDLIGUYw1/KeDJXbkrJ6RBGEkmuQ+vGTbKabB974pNf5anaoShom/tP28iVibDZsZ0cv0eG84z6jlDNsWK1zjk14MQuaaIBgLDaX/doLjoo4v197FSnD/Y4Ir4jG/AyGrRVES0vyFMKCaYGbiXJe8htkBx9Mx1ya1B0+Zn7yZBxqCC1Hf99n/e2SfakK5hD5dJZQdQZ6o;20:29u4VpHIOYlhIEjJWMW1XQLFkWklNKd//xH3oIkBGUjKnHb0RmL8ugYMrG94X7K9xLElfyfTwIsCO8kKKFIgvI9miy7sDo7xO29w854mEyZLjF2EM+661vINN5ysw18OTAQjEXDm7Iq3OylPPEF5roM9JvGpp+ZBZyokjUgBOXY=
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 13 Oct 2018 15:32:46.7715
+ (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 3aa3ff7f-2e43-4ebd-b484-42e80b2efcaa
+X-MS-Exchange-CrossTenant-Network-Message-Id: be022ba6-cec0-4538-1186-08d631212083
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: DM6PR11MB3323
+X-MS-Exchange-Transport-EndToEndLatency: 00:00:01.5618167
+X-MS-Exchange-Processed-By-BccFoldering: 15.20.1228.020
+X-Microsoft-Exchange-Diagnostics:
+	1;MWHPR11MB1917;9:s6S6uri+se89pb4I7I10FSPdydvE4hP122rVsuiYbJ878SM4HHFTIIHwaCOCo1khg3mmXEgP+NzIL+tFWq7hcY6qgxoxv4rGaa5jje9edsjzByR7nuNNO5TMdqbzlQjT
+X-Microsoft-Antispam-Mailbox-Delivery:
+	ucf:0;jmr:0;ex:0;auth:0;dest:I;ENG:(750119)(520011016)(706158)(944506303)(944626516);
+X-Microsoft-Antispam-Message-Info:
+	yXldfeek3dUErh/8k4BWfzN7DHn2LtnflIqkdXOCxHSMNY+YRMwUB9PniF2hiu1hOlODvnqXTyxI3v/rqYg1VEWhS18eMGxrMU3PE10fTJs3jtDjjCTjtBRf3rlbk8tWHIB72SZTinyqHUjffC3vDqSLk8siBvYqJeWABz5b3O8hN+14yOCs6TwJmPcBjswk0AhZaRdv5Q/d2MHiUQGf4xKB1rz3KJTleNaH5E3DDOzt1KoPcbpa/0ZM5EP8e9QfZowhTpR+m+nPgkFz2vOGnOAfpAmGKjjQNuXdsmHj0lhWX1ybngiTAPU609Z/+nCS8MZJ3gaxMrT6xdrmhOlgAsJX4r9a5qSmgt734eJw4tIwLSBvuH3b3SPFXG8FNf/GJIcMkUPotzPWbI1+oRJTv8OSxacCWb/Yh7H/fyl/Z38=
+X-Microsoft-Exchange-Diagnostics:
+	1;MWHPR11MB1917;27:fauDzr3d55vZVSofe8MYDoQ/wsGvH4k5HzUfocSGJsjWvzohQsoy6vGncywn2MVtYjs00Ywp11VHAc0g6RRdYnmKHexyddcDZTIoGfFsnL6lz9OuhzkRiY+KFYk0AjlzvkrPr8C0snbOhtDTtaE8MQRCSmwBDnIM6a8EheYjyenhKceWWz2Xia7BucoO2CqFozZasfc1FUFHNIqcgQfpmaRrbEZpcsLSRDbwW3j4GFZFtAT30vcmue+lIVEOFtxByi5qRew19stAUf+vil1mVZxIWffFrpQNBn8NtCVZHmNK6spqnWFXaBFkK8wDHOofaMTpgrg+XVLIU0evlzFkSK1twjRu7l9m3C4KGrIQuYYFtRZVp1JL0ewpg2dPLz1J7ijePejRJ2iMUfmpLBH6wg==
+Content-type: multipart/alternative;
+	boundary="B_3622276982_2041053387"
+
+> This message is in MIME format. Since your mail reader does not understand
+this format, some or all of this message may not be legible.
+
+--B_3622276982_2041053387
+Content-type: text/plain;
+	charset="UTF-8"
+Content-transfer-encoding: 7bit
+
+The SIGCT Database seems to be down today. Can someone look at it.
+
+ 
+
+Thanks,
+
+-Pradeep.
+
+
+--B_3622276982_2041053387
+Content-type: text/html;
+	charset="UTF-8"
+Content-transfer-encoding: quoted-printable
+
+<html xmlns:o=3D"urn:schemas-microsoft-com:office:office" xmlns:w=3D"urn:schema=
+s-microsoft-com:office:word" xmlns:m=3D"http://schemas.microsoft.com/office/20=
+04/12/omml" xmlns=3D"http://www.w3.org/TR/REC-html40">
+<head>
+<meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3Dutf-8">
+<meta name=3D"Generator" content=3D"Microsoft Word 15 (filtered medium)">
+<style><!--
+/* Font Definitions */
+@font-face
+	{font-family:"Cambria Math";
+	panose-1:2 4 5 3 5 4 6 3 2 4;}
+@font-face
+	{font-family:Calibri;
+	panose-1:2 15 5 2 2 2 4 3 2 4;}
+/* Style Definitions */
+p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{margin:0in;
+	margin-bottom:.0001pt;
+	font-size:12.0pt;
+	font-family:"Calibri",sans-serif;}
+a:link, span.MsoHyperlink
+	{mso-style-priority:99;
+	color:#0563C1;
+	text-decoration:underline;}
+a:visited, span.MsoHyperlinkFollowed
+	{mso-style-priority:99;
+	color:#954F72;
+	text-decoration:underline;}
+span.EmailStyle17
+	{mso-style-type:personal-compose;
+	font-family:"Calibri",sans-serif;
+	color:windowtext;}
+.MsoChpDefault
+	{mso-style-type:export-only;
+	font-family:"Calibri",sans-serif;}
+@page WordSection1
+	{size:8.5in 11.0in;
+	margin:1.0in 1.0in 1.0in 1.0in;}
+div.WordSection1
+	{page:WordSection1;}
+--></style>
+</head>
+<body lang=3D"EN-US" link=3D"#0563C1" vlink=3D"#954F72">
+<div class=3D"WordSection1">
+<p class=3D"MsoNormal"><span style=3D"font-size:11.0pt">The SIGCT Database seem=
+s to be down today. Can someone look at it.<o:p></o:p></span></p>
+<p class=3D"MsoNormal"><span style=3D"font-size:11.0pt"><o:p>&nbsp;</o:p></span=
+></p>
+<p class=3D"MsoNormal"><span style=3D"font-size:11.0pt">Thanks,<o:p></o:p></spa=
+n></p>
+<p class=3D"MsoNormal"><span style=3D"font-size:11.0pt">-Pradeep.<o:p></o:p></s=
+pan></p>
+</div>
+</body>
+</html>
+
+
+--B_3622276982_2041053387--
+

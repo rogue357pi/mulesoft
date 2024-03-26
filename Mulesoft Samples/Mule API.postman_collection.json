@@ -1,0 +1,1857 @@
+{
+	"info": {
+		"_postman_id": "1da6bdcb-76d9-48ad-aea4-849fa9035b68",
+		"name": "Mule API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Anypoint login",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "96d806f1-3f46-4147-953c-778b4d98feb6",
+						"exec": [
+							"const cookieJar = pm.cookies.jar();\r",
+							"cookieJar.clear(pm.request.url, function (error) {\r",
+							"//cookieJar.clear(\"anypoint.mulesoft.com\", function (error) {\r",
+							"  console.log(\"Cookies cleared\");\r",
+							"});\r",
+							"\r",
+							"var jsonData = JSON.parse(responseBody);\r",
+							"postman.setEnvironmentVariable(\"access_token\", jsonData.access_token);\r",
+							"console.log(\"Access Token \" + jsonData.access_token);\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "5ec69010-6923-4c7f-b81e-9a940304b622",
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\" : \"tfs_eas1_primary_functional\",\r\n    \"password\" : \"w5WX6xQFnXR9H9ve\"\r\n}"
+				},
+				"url": {
+					"raw": "https://anypoint.mulesoft.com/accounts/login",
+					"protocol": "https",
+					"host": [
+						"anypoint",
+						"mulesoft",
+						"com"
+					],
+					"path": [
+						"accounts",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Anypoint OAuth Login",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "f4c8c1f7-4c16-442a-ab69-89714fe0eb07",
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);\r",
+							"postman.setEnvironmentVariable(\"access_token\", jsonData.access_token);\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n   \"client_id\" : \"3a62b42bde4b413d8f291f6f0f5a184f\",\r\n   \"client_secret\": \"94C0fDA20c01437Ea492FC21DFA9D6c1\",\r\n   \"grant_type\" : \"client_credentials\"\r\n}\r\n"
+				},
+				"url": {
+					"raw": "https://anypoint.mulesoft.com/accounts/oauth2/token",
+					"protocol": "https",
+					"host": [
+						"anypoint",
+						"mulesoft",
+						"com"
+					],
+					"path": [
+						"accounts",
+						"oauth2",
+						"token"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Anypoint login 2 DO NOT USE",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "https://anypoint.mulesoft.com/accounts/login?username=anypoint_user&password=mypass",
+					"protocol": "https",
+					"host": [
+						"anypoint",
+						"mulesoft",
+						"com"
+					],
+					"path": [
+						"accounts",
+						"login"
+					],
+					"query": [
+						{
+							"key": "username",
+							"value": "anypoint_user"
+						},
+						{
+							"key": "password",
+							"value": "mypass"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "TFS Organization info",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{access_token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://anypoint.mulesoft.com/apiplatform/repository/v2/organizations/78ef5ba8-1df7-49d4-accc-2a8e3d804805?extended=true&resolveTheme=false",
+					"protocol": "https",
+					"host": [
+						"anypoint",
+						"mulesoft",
+						"com"
+					],
+					"path": [
+						"apiplatform",
+						"repository",
+						"v2",
+						"organizations",
+						"78ef5ba8-1df7-49d4-accc-2a8e3d804805"
+					],
+					"query": [
+						{
+							"key": "extended",
+							"value": "true"
+						},
+						{
+							"key": "resolveTheme",
+							"value": "false"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "TFS load balancer info",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "12Jacket",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "bsauls_toyota",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://anypoint.mulesoft.com/cloudhub/api/organizations/78ef5ba8-1df7-49d4-accc-2a8e3d804805/loadbalancers",
+					"protocol": "https",
+					"host": [
+						"anypoint",
+						"mulesoft",
+						"com"
+					],
+					"path": [
+						"cloudhub",
+						"api",
+						"organizations",
+						"78ef5ba8-1df7-49d4-accc-2a8e3d804805",
+						"loadbalancers"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "TFS VPC info",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "12Jacket",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "bsauls_toyota",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://anypoint.mulesoft.com/cloudhub/api/organizations/78ef5ba8-1df7-49d4-accc-2a8e3d804805/vpcs",
+					"protocol": "https",
+					"host": [
+						"anypoint",
+						"mulesoft",
+						"com"
+					],
+					"path": [
+						"cloudhub",
+						"api",
+						"organizations",
+						"78ef5ba8-1df7-49d4-accc-2a8e3d804805",
+						"vpcs"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "TFS VPC Usage",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "12Jacket",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "bsauls_toyota",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://anypoint.mulesoft.com/cloudhub/api/organizations/78ef5ba8-1df7-49d4-accc-2a8e3d804805/usage",
+					"protocol": "https",
+					"host": [
+						"anypoint",
+						"mulesoft",
+						"com"
+					],
+					"path": [
+						"cloudhub",
+						"api",
+						"organizations",
+						"78ef5ba8-1df7-49d4-accc-2a8e3d804805",
+						"usage"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "TFS VPC Load balancer info",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "12Jacket",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "bsauls_toyota",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://anypoint.mulesoft.com/cloudhub/api/organizations/78ef5ba8-1df7-49d4-accc-2a8e3d804805/vpcs/vpc-05398f9f43ed453af",
+					"protocol": "https",
+					"host": [
+						"anypoint",
+						"mulesoft",
+						"com"
+					],
+					"path": [
+						"cloudhub",
+						"api",
+						"organizations",
+						"78ef5ba8-1df7-49d4-accc-2a8e3d804805",
+						"vpcs",
+						"vpc-05398f9f43ed453af"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "TFS Get VPC Load Balancer details",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "12Jacket",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "bsauls_toyota",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://anypoint.mulesoft.com/cloudhub/api/organizations/78ef5ba8-1df7-49d4-accc-2a8e3d804805/vpcs/vpc-05398f9f43ed453af/loadbalancers",
+					"protocol": "https",
+					"host": [
+						"anypoint",
+						"mulesoft",
+						"com"
+					],
+					"path": [
+						"cloudhub",
+						"api",
+						"organizations",
+						"78ef5ba8-1df7-49d4-accc-2a8e3d804805",
+						"vpcs",
+						"vpc-05398f9f43ed453af",
+						"loadbalancers"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "VPN Details",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "w5WX6xQFnXR9H9ve",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "tfs_eas1_primary_functional",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://anypoint.mulesoft.com/cloudhub/api/organizations/78ef5ba8-1df7-49d4-accc-2a8e3d804805/vpcs/vpc-05398f9f43ed453af/ipsec",
+					"protocol": "https",
+					"host": [
+						"anypoint",
+						"mulesoft",
+						"com"
+					],
+					"path": [
+						"cloudhub",
+						"api",
+						"organizations",
+						"78ef5ba8-1df7-49d4-accc-2a8e3d804805",
+						"vpcs",
+						"vpc-05398f9f43ed453af",
+						"ipsec"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "VPN Details specific",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "w5WX6xQFnXR9H9ve",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "tfs_eas1_primary_functional",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://anypoint.mulesoft.com/cloudhub/api/organizations/78ef5ba8-1df7-49d4-accc-2a8e3d804805/vpcs/vpc-05398f9f43ed453af/ipsec/5cb8a472597f301094164a44",
+					"protocol": "https",
+					"host": [
+						"anypoint",
+						"mulesoft",
+						"com"
+					],
+					"path": [
+						"cloudhub",
+						"api",
+						"organizations",
+						"78ef5ba8-1df7-49d4-accc-2a8e3d804805",
+						"vpcs",
+						"vpc-05398f9f43ed453af",
+						"ipsec",
+						"5cb8a472597f301094164a44"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "VPN Details Update",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "w5WX6xQFnXR9H9ve",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "tfs_eas1_primary_functional",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"awva-esfw-az1a\",\n    \"remoteIpAddress\": \"35.172.173.113\",\n    \"remoteNetworks\": [\n    \t\"150.45.0.0/16\",\n    \t\"10.0.0.0/8\",\n    \t\"8.18.96.0/23\",\n    \t\"8.20.50.0/23\"\n    ]\n}"
+				},
+				"url": {
+					"raw": "https://anypoint.mulesoft.com/cloudhub/api/organizations/78ef5ba8-1df7-49d4-accc-2a8e3d804805/vpcs/vpc-05398f9f43ed453af/ipsec/5cb8a472597f301094164a44",
+					"protocol": "https",
+					"host": [
+						"anypoint",
+						"mulesoft",
+						"com"
+					],
+					"path": [
+						"cloudhub",
+						"api",
+						"organizations",
+						"78ef5ba8-1df7-49d4-accc-2a8e3d804805",
+						"vpcs",
+						"vpc-05398f9f43ed453af",
+						"ipsec",
+						"5cb8a472597f301094164a44"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Load Balancer cipher suites",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "12Jacket",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "bsauls_toyota",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://anypoint.mulesoft.com/cloudhub/api/organizations/78ef5ba8-1df7-49d4-accc-2a8e3d804805/loadbalancers/ciphersuites",
+					"protocol": "https",
+					"host": [
+						"anypoint",
+						"mulesoft",
+						"com"
+					],
+					"path": [
+						"cloudhub",
+						"api",
+						"organizations",
+						"78ef5ba8-1df7-49d4-accc-2a8e3d804805",
+						"loadbalancers",
+						"ciphersuites"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Load Balancer Cipher suites",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "12Jacket",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "bsauls_toyota",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "[\n    {\n        \"op\": \"replace\",\n        \"path\": \"/defaultCipherSuiteName\",\n        \"value\": \"<CipherSuiteName>\"\n    }\n]"
+				},
+				"url": {
+					"raw": "https://anypoint.mulesoft.com/cloudhub/api/organizations/78ef5ba8-1df7-49d4-accc-2a8e3d804805/vpcs/vpc-0edbd9d0e415d2cda/loadbalancers/5ccb87cc597f3010946ba8a1",
+					"protocol": "https",
+					"host": [
+						"anypoint",
+						"mulesoft",
+						"com"
+					],
+					"path": [
+						"cloudhub",
+						"api",
+						"organizations",
+						"78ef5ba8-1df7-49d4-accc-2a8e3d804805",
+						"vpcs",
+						"vpc-0edbd9d0e415d2cda",
+						"loadbalancers",
+						"5ccb87cc597f3010946ba8a1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "TFS Update load balancer details",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "12Jacket",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "bsauls_toyota",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "[\n    {\n        \"op\": \"replace\",\n        \"path\": \"ipWhitelist\",\n        \"value\": [\n\t        \"10.0.0.0/8\"\n\t        ]\n    }\n]"
+				},
+				"url": {
+					"raw": "https://anypoint.mulesoft.com/cloudhub/api/organizations/78ef5ba8-1df7-49d4-accc-2a8e3d804805/vpcs/vpc-05398f9f43ed453af/loadbalancers/5cb6239e597f301094f90c22",
+					"protocol": "https",
+					"host": [
+						"anypoint",
+						"mulesoft",
+						"com"
+					],
+					"path": [
+						"cloudhub",
+						"api",
+						"organizations",
+						"78ef5ba8-1df7-49d4-accc-2a8e3d804805",
+						"vpcs",
+						"vpc-05398f9f43ed453af",
+						"loadbalancers",
+						"5cb6239e597f301094f90c22"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Authorize",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://mq-us-east-1.anypoint.mulesoft.com/api/v1/authorize?client_id=45b7c238defc4dd5acfe19240fc333ed&client_secret=bDC2Fc4817C34928A779E8f7B011F6C6&grant_type=client_credentials",
+					"protocol": "https",
+					"host": [
+						"mq-us-east-1",
+						"anypoint",
+						"mulesoft",
+						"com"
+					],
+					"path": [
+						"api",
+						"v1",
+						"authorize"
+					],
+					"query": [
+						{
+							"key": "client_id",
+							"value": "45b7c238defc4dd5acfe19240fc333ed"
+						},
+						{
+							"key": "client_secret",
+							"value": "bDC2Fc4817C34928A779E8f7B011F6C6"
+						},
+						{
+							"key": "grant_type",
+							"value": "client_credentials"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get User info",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "12Jacket",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "bsauls_toyota",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://anypoint.mulesoft.com/cloudhub/api/users/bsauls_toyota",
+					"protocol": "https",
+					"host": [
+						"anypoint",
+						"mulesoft",
+						"com"
+					],
+					"path": [
+						"cloudhub",
+						"api",
+						"users",
+						"bsauls_toyota"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "User info ME",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "6b0f32dd-3b62-4bfd-ba71-6bbce7b3a066",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Client_id",
+						"value": "3a62b42bde4b413d8f291f6f0f5a184f",
+						"type": "text"
+					},
+					{
+						"key": "Client_secret",
+						"value": "94C0fDA20c01437Ea492FC21DFA9D6c1",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://anypoint.mulesoft.com/accounts/api/users/me",
+					"protocol": "https",
+					"host": [
+						"anypoint",
+						"mulesoft",
+						"com"
+					],
+					"path": [
+						"accounts",
+						"api",
+						"users",
+						"me"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Account status",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "956e4660-98a5-4400-97e8-70d8cc0f284c",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Client_id",
+						"value": "3a62b42bde4b413d8f291f6f0f5a184f",
+						"type": "text"
+					},
+					{
+						"key": "Client_secret",
+						"value": "94C0fDA20c01437Ea492FC21DFA9D6c1",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://anypoint.mulesoft.com/accounts/api/status",
+					"protocol": "https",
+					"host": [
+						"anypoint",
+						"mulesoft",
+						"com"
+					],
+					"path": [
+						"accounts",
+						"api",
+						"status"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Account information",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "a4078bc1-e71c-411a-93ee-b235b22e3c5c",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "X-ANYPNT-ENV-ID",
+						"value": "b8432605-edc7-42e8-8043-bed9b2fb735a",
+						"type": "text"
+					},
+					{
+						"key": "X-ANYPNT-ORG-ID",
+						"value": "78ef5ba8-1df7-49d4-accc-2a8e3d804805",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://anypoint.mulesoft.com/cloudhub/api/account",
+					"protocol": "https",
+					"host": [
+						"anypoint",
+						"mulesoft",
+						"com"
+					],
+					"path": [
+						"cloudhub",
+						"api",
+						"account"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Org info",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "a4078bc1-e71c-411a-93ee-b235b22e3c5c",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "X-ANYPNT-ENV-ID",
+						"value": "dfcbb24a-261d-4caf-8909-1994f3190392",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"url": {
+					"raw": "https://anypoint.mulesoft.com/accounts/api/organizations/{{orgTFS}}",
+					"protocol": "https",
+					"host": [
+						"anypoint",
+						"mulesoft",
+						"com"
+					],
+					"path": [
+						"accounts",
+						"api",
+						"organizations",
+						"{{orgTFS}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Analytics report",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "54d92a62-6abc-40eb-9375-b11ac9fb0778",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://anypoint.mulesoft.com:443/analytics/1.0/78ef5ba8-1df7-49d4-accc-2a8e3d804805/environments/dfcbb24a-261d-4caf-8909-1994f3190392/events?format=json&duration=7d&fields=Application%20Name.Application.Resource%20Path.Runtime%20Host.Status%20Code.Request%20Outcome.Request%20Size.Response%20Size.Response%20Time.Violated%20Policy%20Name.Verb",
+					"protocol": "https",
+					"host": [
+						"anypoint",
+						"mulesoft",
+						"com"
+					],
+					"port": "443",
+					"path": [
+						"analytics",
+						"1.0",
+						"78ef5ba8-1df7-49d4-accc-2a8e3d804805",
+						"environments",
+						"dfcbb24a-261d-4caf-8909-1994f3190392",
+						"events"
+					],
+					"query": [
+						{
+							"key": "format",
+							"value": "json"
+						},
+						{
+							"key": "duration",
+							"value": "7d"
+						},
+						{
+							"key": "fields",
+							"value": "Application%20Name.Application.Resource%20Path.Runtime%20Host.Status%20Code.Request%20Outcome.Request%20Size.Response%20Size.Response%20Time.Violated%20Policy%20Name.Verb"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Application info",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{access_token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "X-ANYPNT-ENV-ID",
+						"value": "dfcbb24a-261d-4caf-8909-1994f3190392",
+						"type": "text"
+					},
+					{
+						"key": "X-ANYPNT-ORG-ID",
+						"value": "78ef5ba8-1df7-49d4-accc-2a8e3d804805",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://anypoint.mulesoft.com/cloudhub/api/applications",
+					"protocol": "https",
+					"host": [
+						"anypoint",
+						"mulesoft",
+						"com"
+					],
+					"path": [
+						"cloudhub",
+						"api",
+						"applications"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Application Worker info",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{access_token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "X-ANYPNT-ENV-ID",
+						"value": "b8432605-edc7-42e8-8043-bed9b2fb735a",
+						"type": "text"
+					},
+					{
+						"key": "X-ANYPNT-ORG-ID",
+						"value": "78ef5ba8-1df7-49d4-accc-2a8e3d804805",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://anypoint.mulesoft.com/cloudhub/api/applications/oauthprovider-app/workers",
+					"protocol": "https",
+					"host": [
+						"anypoint",
+						"mulesoft",
+						"com"
+					],
+					"path": [
+						"cloudhub",
+						"api",
+						"applications",
+						"oauthprovider-app",
+						"workers"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Application info V2 detailed",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "32b421bd-74bf-4258-bfdc-bca319be0368",
+						"exec": [
+							"",
+							"var template = `",
+							"    <style type=\"text/css\">",
+							"        .tftable {font-size:14px;color:#333333;width:100%;border-width: 1px;border-color: #87ceeb;border-collapse: collapse;}",
+							"        .tftable th {font-size:18px;background-color:#87ceeb;border-width: 1px;padding: 8px;border-style: solid;border-color: #87ceeb;text-align:left;}",
+							"        .tftable tr {background-color:#ffffff;}",
+							"        .tftable td {font-size:14px;border-width: 1px;padding: 8px;border-style: solid;border-color: #87ceeb;}",
+							"        .tftable tr:hover {background-color:#e0ffff;}",
+							"    </style>",
+							"    ",
+							"    <script>",
+							"    function convertTimestamp(s) {",
+							"        var dateTimeString = moment(s).format(\"DD-MM-YYYY HH:mm:ss\");",
+							"        console.log(dateTimeString);",
+							"        return dateTimeString;",
+							"    }",
+							"    </script>",
+							"",
+							"    <table class=\"tftable\" border=\"1\">",
+							"        <tr>",
+							"            <th>Deployed Name</th>",
+							"            <th>Status</th>",
+							"            <th>Mule Version</th>",
+							"            <th>Worker Size</th>",
+							"            <th>Worker Count</th>",
+							"            <th>Last update</th>",
+							"        </tr>",
+							"        ",
+							"        {{#each response}}",
+							"            <tr id=row_{{@key}} onClick=\"handleClick(this.versionId)\">",
+							"                <td id={{@key}}>{{domain}}</td>",
+							"                <td>{{status}}</td>",
+							"                <td>{{muleVersion.version}}</td>",
+							"                <td>{{workers.type.name}} {{workers.type.weight}}</td>",
+							"                <td>{{workers.amount}}</td>",
+							"                <td>{{lastUpdateTime}}</td>",
+							"            </tr>",
+							"        {{/each}}",
+							"    </table>",
+							"    `;",
+							"    ",
+							"pm.visualizer.set(template, {",
+							"    // Pass the response body parsed as JSON as `data`",
+							"    response: pm.response.json()",
+							"});",
+							"",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{access_token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "X-ANYPNT-ENV-ID",
+						"value": "{{tfsenvid}}",
+						"type": "text"
+					},
+					{
+						"key": "X-ANYPNT-ORG-ID",
+						"value": "78ef5ba8-1df7-49d4-accc-2a8e3d804805",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://anypoint.mulesoft.com/cloudhub/api/v2/applications?limit=300&retrieveStatistics=false&retrieveLogLevels=true&retrieveTrackingSettings=true&retrieveIpAddresses=true",
+					"protocol": "https",
+					"host": [
+						"anypoint",
+						"mulesoft",
+						"com"
+					],
+					"path": [
+						"cloudhub",
+						"api",
+						"v2",
+						"applications"
+					],
+					"query": [
+						{
+							"key": "limit",
+							"value": "300"
+						},
+						{
+							"key": "retrieveStatistics",
+							"value": "false"
+						},
+						{
+							"key": "period",
+							"value": "3600000",
+							"disabled": true
+						},
+						{
+							"key": "retrieveLogLevels",
+							"value": "true"
+						},
+						{
+							"key": "retrieveTrackingSettings",
+							"value": "true"
+						},
+						{
+							"key": "retrieveIpAddresses",
+							"value": "true"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Application Clients",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "c50d6d46-7fb7-4610-92e8-94be7573c5c2",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://anypoint.mulesoft.com/apiplatform/repository/v2/organizations/78ef5ba8-1df7-49d4-accc-2a8e3d804805/applications",
+					"protocol": "https",
+					"host": [
+						"anypoint",
+						"mulesoft",
+						"com"
+					],
+					"path": [
+						"apiplatform",
+						"repository",
+						"v2",
+						"organizations",
+						"78ef5ba8-1df7-49d4-accc-2a8e3d804805",
+						"applications"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Exchange Asset List",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{access_token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://anypoint.mulesoft.com/exchange/api/v1/assets?organizationId=78ef5ba8-1df7-49d4-accc-2a8e3d804805&limit=300",
+					"protocol": "https",
+					"host": [
+						"anypoint",
+						"mulesoft",
+						"com"
+					],
+					"path": [
+						"exchange",
+						"api",
+						"v1",
+						"assets"
+					],
+					"query": [
+						{
+							"key": "organizationId",
+							"value": "78ef5ba8-1df7-49d4-accc-2a8e3d804805"
+						},
+						{
+							"key": "limit",
+							"value": "300"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Exchange Asset List OAuth2",
+			"request": {
+				"auth": {
+					"type": "oauth2",
+					"oauth2": [
+						{
+							"key": "accessToken",
+							"value": "d32bf43e-e5ef-4b68-92ff-bc86f25091af",
+							"type": "string"
+						},
+						{
+							"key": "tokenType",
+							"value": "bearer",
+							"type": "string"
+						},
+						{
+							"key": "addTokenTo",
+							"value": "header",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://anypoint.mulesoft.com/exchange/api/v1/assets?organizationId=78ef5ba8-1df7-49d4-accc-2a8e3d804805&limit=300",
+					"protocol": "https",
+					"host": [
+						"anypoint",
+						"mulesoft",
+						"com"
+					],
+					"path": [
+						"exchange",
+						"api",
+						"v1",
+						"assets"
+					],
+					"query": [
+						{
+							"key": "organizationId",
+							"value": "78ef5ba8-1df7-49d4-accc-2a8e3d804805"
+						},
+						{
+							"key": "limit",
+							"value": "300"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Exchange Specific Asset info",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "67e7bee2-b4c0-4dfa-940b-b20345f446e9",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://anypoint.mulesoft.com/exchange/api/v2/assets/78ef5ba8-1df7-49d4-accc-2a8e3d804805/routeonepniservices",
+					"protocol": "https",
+					"host": [
+						"anypoint",
+						"mulesoft",
+						"com"
+					],
+					"path": [
+						"exchange",
+						"api",
+						"v2",
+						"assets",
+						"78ef5ba8-1df7-49d4-accc-2a8e3d804805",
+						"routeonepniservices"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Icon Update",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "fdf8bd89-8034-4475-bf6f-fe799522514f",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "image/png",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "file",
+							"type": "file",
+							"src": "exchange_coupa_logo_48x48.png"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://anypoint.mulesoft.com/exchange/api/v2/assets/:groupId/:assetId/:version/icon",
+					"protocol": "https",
+					"host": [
+						"anypoint",
+						"mulesoft",
+						"com"
+					],
+					"path": [
+						"exchange",
+						"api",
+						"v2",
+						"assets",
+						":groupId",
+						":assetId",
+						":version",
+						"icon"
+					],
+					"variable": [
+						{
+							"key": "groupId",
+							"value": "78ef5ba8-1df7-49d4-accc-2a8e3d804805"
+						},
+						{
+							"key": "assetId",
+							"value": "coupa-procurement-services"
+						},
+						{
+							"key": "version",
+							"value": "1.0.1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "API Analytics Report",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "ddd99954-62a8-4197-a42c-99d468432be4",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://anypoint.mulesoft.com/analytics/1.0/78ef5ba8-1df7-49d4-accc-2a8e3d804805/environments/dfcbb24a-261d-4caf-8909-1994f3190392/events?format=json&duration=3d&fields=Application%20Name.Application.Resource%20Path.Runtime%20Host.Status%20Code.Request%20Outcome.Request%20Size.Response%20Size.Response%20Time.Violated%20Policy%20Name.Verb\n",
+					"protocol": "https",
+					"host": [
+						"anypoint",
+						"mulesoft",
+						"com"
+					],
+					"path": [
+						"analytics",
+						"1.0",
+						"78ef5ba8-1df7-49d4-accc-2a8e3d804805",
+						"environments",
+						"dfcbb24a-261d-4caf-8909-1994f3190392",
+						"events"
+					],
+					"query": [
+						{
+							"key": "format",
+							"value": "json"
+						},
+						{
+							"key": "duration",
+							"value": "3d"
+						},
+						{
+							"key": "fields",
+							"value": "Application%20Name.Application.Resource%20Path.Runtime%20Host.Status%20Code.Request%20Outcome.Request%20Size.Response%20Size.Response%20Time.Violated%20Policy%20Name.Verb\n"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get API Manager info",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "285a1379-018b-49d6-ad8b-25876bca9ce3",
+						"exec": [
+							"",
+							"var template = `",
+							"    <style type=\"text/css\">",
+							"        .tftable {font-size:14px;color:#333333;width:100%;border-width: 1px;border-color: #87ceeb;border-collapse: collapse;}",
+							"        .tftable th {font-size:18px;background-color:#87ceeb;border-width: 1px;padding: 8px;border-style: solid;border-color: #87ceeb;text-align:left;}",
+							"        .tftable tr {background-color:#ffffff;}",
+							"        .tftable td {font-size:14px;border-width: 1px;padding: 8px;border-style: solid;border-color: #87ceeb;}",
+							"        .tftable tr:hover {background-color:#e0ffff;}",
+							"    </style>",
+							"    ",
+							"    <table class=\"tftable\" border=\"1\">",
+							"        <tr>",
+							"            <th>Exchange Name</th>",
+							"            <th>Runtime Name</th>",
+							"            <th>Created</th>",
+							"            <th>API.ID</th>",
+							"            <th>Last Active</th>",
+							"            <th>Updated</th>",
+							"        </tr>",
+							"        ",
+							"        {{#each response.assets}}",
+							"            <tr id=row_{{@key}} onClick=\"handleClick(this.id)\">",
+							"                <td id={{@key}}>{{exchangeAssetName}}</td>",
+							"                <td>{{assetId}}</td>",
+							"                <td>{{audit.created.date}}</td>",
+							"                {{#each apis}}",
+							"<!--                <td>{{@key}}</td> -->",
+							"                    <td>{{id}}</td>",
+							"                    <td>{{lastActiveDate}}</td>",
+							"                    <td>{{audit.updated.date}}</td>",
+							"                {{/each}}",
+							"            </tr>",
+							"        {{/each}}",
+							"    </table>",
+							"    `;",
+							"    ",
+							"pm.visualizer.set(template, {",
+							"    // Pass the response body parsed as JSON as `data`",
+							"    response: pm.response.json()",
+							"});",
+							"",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{access_token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "X-ANYPNT-ENV-ID",
+						"value": "{{tfsenvid}}",
+						"type": "text"
+					},
+					{
+						"key": "X-ANYPNT-ORG-ID",
+						"value": "{{orgTFS}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://anypoint.mulesoft.com/apimanager/api/v1/organizations/{{orgTFS}}/environments/{{tfsenvid}}/apis?",
+					"protocol": "https",
+					"host": [
+						"anypoint",
+						"mulesoft",
+						"com"
+					],
+					"path": [
+						"apimanager",
+						"api",
+						"v1",
+						"organizations",
+						"{{orgTFS}}",
+						"environments",
+						"{{tfsenvid}}",
+						"apis"
+					],
+					"query": [
+						{
+							"key": "offset",
+							"value": "100",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get API Manager Policy info",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{access_token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "X-ANYPNT-ENV-ID",
+						"value": "dfcbb24a-261d-4caf-8909-1994f3190392",
+						"type": "text"
+					},
+					{
+						"key": "X-ANYPNT-ORG-ID",
+						"value": "78ef5ba8-1df7-49d4-accc-2a8e3d804805",
+						"type": "text"
+					},
+					{
+						"key": "If-Modified-Since",
+						"value": "1",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"url": {
+					"raw": "https://anypoint.mulesoft.com/apimanager/api/v1/organizations/78ef5ba8-1df7-49d4-accc-2a8e3d804805/environments/dfcbb24a-261d-4caf-8909-1994f3190392/apis/15830276/policies?fullInfo=true",
+					"protocol": "https",
+					"host": [
+						"anypoint",
+						"mulesoft",
+						"com"
+					],
+					"path": [
+						"apimanager",
+						"api",
+						"v1",
+						"organizations",
+						"78ef5ba8-1df7-49d4-accc-2a8e3d804805",
+						"environments",
+						"dfcbb24a-261d-4caf-8909-1994f3190392",
+						"apis",
+						"15830276",
+						"policies"
+					],
+					"query": [
+						{
+							"key": "fullInfo",
+							"value": "true"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "List API's for environment with Visualizer",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "28e02a82-8850-47b3-917d-998dd917fe8f",
+						"exec": [
+							"var template = `\r",
+							"    <table>\r",
+							"        <tr>\r",
+							"            <th>API Name</th>\r",
+							"            <th>Asset ID</th>\r",
+							"            <th>API ID</th>\r",
+							"            <th>Version</th>\r",
+							"        </tr>\r",
+							"\r",
+							"        {{#each response.assets}}\r",
+							"            <tr>\r",
+							"                <td>{{exchangeAssetName}}</td>\r",
+							"                <td>{{assetId}}</td>\r",
+							"        {{#each apis}}\r",
+							"                <td>{{id}}</td>\r",
+							"                <td>{{assetVersion}}</td>\r",
+							"        {{/each}}\r",
+							"            </tr>\r",
+							"        {{/each}}\r",
+							"    </table>\r",
+							"`;\r",
+							"// Set visualizer\r",
+							"pm.visualizer.set(template, {\r",
+							"    // Pass the response body parsed as JSON as `data`\r",
+							"    response: pm.response.json()\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "4a5a7ca4-5287-4fb6-9bb4-9e86b479cdec",
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{access_token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://anypoint.mulesoft.com/apimanager/api/v1/organizations/78ef5ba8-1df7-49d4-accc-2a8e3d804805/environments/dfcbb24a-261d-4caf-8909-1994f3190392/apis",
+					"protocol": "https",
+					"host": [
+						"anypoint",
+						"mulesoft",
+						"com"
+					],
+					"path": [
+						"apimanager",
+						"api",
+						"v1",
+						"organizations",
+						"78ef5ba8-1df7-49d4-accc-2a8e3d804805",
+						"environments",
+						"dfcbb24a-261d-4caf-8909-1994f3190392",
+						"apis"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Promote API Manger",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "c1481191-98c6-4c79-bf3f-606701732d1c",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n \"instanceLabel\": null,\r\n \"promote\": {\r\n  \"originApiId\": 15778941,\r\n  \"policies\": {\r\n\t\"allEntities\": true\r\n  },\r\n  \"tiers\": {\r\n  \t\"allEntities\": true\r\n  },\r\n  \"alerts\": {\r\n  \t\"allEntities\": true\r\n  }\r\n }\r\n} "
+				},
+				"url": {
+					"raw": "https://anypoint.mulesoft.com/apimanager/api/v1/organizations/78ef5ba8-1df7-49d4-accc-2a8e3d804805/environments/04d966fc-7142-4330-8c74-55831a4523f6/apis",
+					"protocol": "https",
+					"host": [
+						"anypoint",
+						"mulesoft",
+						"com"
+					],
+					"path": [
+						"apimanager",
+						"api",
+						"v1",
+						"organizations",
+						"78ef5ba8-1df7-49d4-accc-2a8e3d804805",
+						"environments",
+						"04d966fc-7142-4330-8c74-55831a4523f6",
+						"apis"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Change API Asset name",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{access_token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{ \r\n\t\"exchangeAssetName\": \"Dealer Login Services\" \r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://anypoint.mulesoft.com/apiplatform/repository/v2/organizations/78ef5ba8-1df7-49d4-accc-2a8e3d804805/apis/211191785",
+					"protocol": "https",
+					"host": [
+						"anypoint",
+						"mulesoft",
+						"com"
+					],
+					"path": [
+						"apiplatform",
+						"repository",
+						"v2",
+						"organizations",
+						"78ef5ba8-1df7-49d4-accc-2a8e3d804805",
+						"apis",
+						"211191785"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
